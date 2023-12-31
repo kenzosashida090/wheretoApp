@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  daisyui: {
+    themes: ["coffee", "nord", "dracula"],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
