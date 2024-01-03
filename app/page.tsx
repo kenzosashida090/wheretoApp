@@ -1,15 +1,15 @@
 import Image from "next/image";
 import logo from "./logo.png";
-export default function Home() {
+import Link from "next/link";
+import { readUserSession } from "../utils/auth";
+import { use } from "react";
+export default async function Home() {
+  const key = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const user = await readUserSession();
+  console.log(")=================>sesion", user);
   return (
     <>
       <main data-theme="nord" className="flex flex-row">
-        <div className="navbar bg-base-100">
-          <div className="flex-1">
-            <a className="btn btn-ghost text-xl">daisyUI</a>
-            <p>Hola</p>
-          </div>
-        </div>
         <div className="flex flex-col justify-center h-screen">
           <div className="max-w-4xl ml-20">
             <h1 className="text-7xl">Where to Find</h1>
@@ -22,8 +22,14 @@ export default function Home() {
               </span>
             </div>
             <div className="space-x-10">
-              <button className="btn btn-success">Get Started</button>
-              <button className="btn btn-success">Learn More</button>
+              <Link href="/login" scroll={false}>
+                <button className="btn btn-success rounded-3xl">
+                  Get Started
+                </button>
+              </Link>
+              <button className="btn btn-success rounded-3xl">
+                Learn More
+              </button>
             </div>
           </div>
         </div>
